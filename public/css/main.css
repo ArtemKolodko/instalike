@@ -1,0 +1,18 @@
+html, body {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #EE565E;
+    border-bottom: 1px solid #EE565E;
+}
+
+.header-profile {
+    background: #6FB0C8;
+    color: #264243;
+}
+
+.in-row {
+    display: inline-block;
+}

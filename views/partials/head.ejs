@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+
+<% if (!user) { %>
+    <a href="/auth/instagram">Login with Instagram</a>
+<% } else { %>
+
+    <div class="header-profile">
+
+        <div class="in-row">
+            <img width="50" src="<%= user._json.data.profile_picture %>"/>
+        </div>
+
+        <div class="in-row" style="vertical-align: top;">
+            <div><a href="https://www.instagram.com/<%= user.username %>"><%= user.username %></a></div>
+        </div>
+    </div>
+
+<% } %>
