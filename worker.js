@@ -1,4 +1,5 @@
 var request = require('request');
+var rp = require('request-promise');
 
 function Worker(data) {
     var self = this;
@@ -29,14 +30,42 @@ function Worker(data) {
         this.defaults.profile = profile;
         console.log('profile: ', profile);
     };
-    
-    this.startJob = function( ){
+
+    /*
+    * {
+    *   target: 'tag',
+    *   targetData: 'bestcatpicture',
+    *   action: 'like' // [like, subscribe]
+    * }
+    * */
+
+    this.startJob = function(data, callback) {
 
         // id: this.defaults.profile._json.data.id
         // https://api.instagram.com/v1/users/{user-id}/media/recent/?access_token=ACCESS-TOKEN
 
         var token = this.defaults.access_token;
         var id = this.defaults.profile._json.data.id; //this.defaults.profile._json.data.id;
+
+        var requestStr = '';
+        switch (data.target) {
+            case 'tag':
+                requestStr = 'https://api.instagram.com/v1/tags/'+data.targetData+'/media/recent?access_token='+token+'&next_max_id=10';
+                break;
+            default: break;
+        }
+
+        rp(requestStr)
+            .then(function (htmlString) {
+               console.log('Response: ', htmlString);
+
+            })
+            .catch(function (err) {
+                // Crawling failed...
+                console.log('error: ');
+            });
+
+        return;
 
         request('https://api.instagram.com/v1/users/'+id+'/media/recent/?access_token='+token, function (error, response, body) {
             if (!error) { // && response.statusCode == 200

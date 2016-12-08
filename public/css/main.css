@@ -3,7 +3,13 @@ html, body {
 }
 
 a {
+    /*#EE565E*/
     text-decoration: none;
+    color: #222;
+    border-bottom: 1px solid #222;
+}
+
+a:hover {
     color: #EE565E;
     border-bottom: 1px solid #EE565E;
 }
@@ -11,6 +17,11 @@ a {
 .header-profile {
     background: #6FB0C8;
     color: #264243;
+    height: 80px;
+}
+
+.header-profile img {
+    border-radius: 25px;
 }
 
 .in-row {

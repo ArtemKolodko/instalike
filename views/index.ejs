@@ -1,6 +1,20 @@
 <% include partials/head %>
 
 Index part
-<a href="/?run=true">Запустить задачу</a>
+
+<% if (user) { %>
+    <div>
+        <h3>Задача 1</h3>
+        <ul>
+            <li>Найти ресурсы по тегу <b>#bestcatpicture</b> (50)</li>
+            <li>Поставить к каждому из них лайк</li>
+        </ul>
+    </div>
+    <a href="/?run=true">Запустить задачу</a>
+
+    <% if (htmlData) { %>
+    <%= htmlData %>
+    <% } %>
+<% } %>
 
 <% include partials/footer %>

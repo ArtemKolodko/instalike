@@ -85,10 +85,13 @@ var app = express();
 app.get('/', function(req, res){
 
   if(req.query.run) {
-    worker.startJob();
+    worker.startJob({
+      target: 'tag',
+      targetData: 'catoftheday'
+    });
   }
 
-  res.render('index', { user: req.user, jobRunning: req.query.run});
+  res.render('index', { user: req.user, htmlData: null});
 });
 
 app.get('/account', ensureAuthenticated, function(req, res){
